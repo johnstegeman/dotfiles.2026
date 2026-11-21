@@ -1,0 +1,7 @@
+[tools]
+git-lfs = "latest"
+jj = "latest"
+
+[bootstrap.packages]
+"brew:git" = "latest"
+"brew:subversion" = "latest"

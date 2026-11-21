@@ -1,0 +1,113 @@
+model = "gpt-5.6-terra"
+model_reasoning_effort = "xhigh"
+[projects."/Users/jstegeman/Projects/_mine/AeroSpace"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/codekg"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/superset"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/eartrain"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/dash"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/emdash"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/superpowers"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/dfiles"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_ai/ai-skills"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/gascity"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/brian_mode"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_ai/recall-recorder"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/conductor/repos/Starter project"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_mine/cy-ai"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/.local/share/mise/installs/codex/0.142.4"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Projects/_pmm/pmm-iris"]
+trust_level = "trusted"
+
+[projects."/Users/jstegeman/Library/Application Support/orca/rate-limit-pty-cwd"]
+trust_level = "trusted"
+
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 2
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-08T19:18:18Z"
+source_type = "local"
+source = "/Users/jstegeman/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-08T19:18:32Z"
+source_type = "local"
+source = "/Users/jstegeman/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[features]
+hooks = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[hooks.state]
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:user_prompt_submit:1:0"]
+trusted_hash = "sha256:c99ea859c36627ab0c79b3ad1c55e0efe5d96134d68721e43697145ab8ed6d58"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:stop:1:0"]
+trusted_hash = "sha256:ff7debca235a3c1f664078daa00880e7306c7fd9cf82309a97741e4f1e62e21b"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:session_start:2:0"]
+trusted_hash = "sha256:68bae0c904f5fb8a50302647c5d96057363dd062dd734a95469f2fdeafe60a75"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:session_start:3:0"]
+trusted_hash = "sha256:70b3662f7914407f605a6c56bc05e11206c3ff002871557ae0fef8c606c44c9a"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:user_prompt_submit:2:0"]
+trusted_hash = "sha256:f57f065033f5cf5d359a04bc11fce77c6442d1efdf386e0228ea16ac9d755f29"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:stop:2:0"]
+trusted_hash = "sha256:5e944c21fd61f88bd351786522790ca9200de2d9d254d908ba3e6c107aaae4ca"
+
+[hooks.state."/Users/jstegeman/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:a0f99817beb85bb91fc3a4fceca2b4805237ba567b2751137a6b804df2ac7efb"

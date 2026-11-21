@@ -1,0 +1,171 @@
+[tools]
+"1password-cli" = "latest"
+mas = "latest"
+# ollama = "latest"
+
+[bootstrap.packages]
+"brew:felixkratz/formulae/borders" = "latest"
+"brew:kanata" = "latest"
+"brew-cask:1password" = "latest"
+"brew-cask:affinity" = "latest"
+"brew-cask:asana" = "latest"
+"brew-cask:font-ioskeley-mono-term-nerd-font" = "latest"
+"brew-cask:font-jetbrains-mono-nerd-font" = "latest"
+"brew-cask:font-maple-mono-nf" = "latest"
+"brew-cask:font-meslo-lg-nerd-font" = "latest"
+"brew-cask:font-monaspace-nf" = "latest"
+"brew-cask:gimp" = "latest"
+"brew-cask:google-drive" = "latest"
+"brew-cask:google-gemini" = "latest"
+"brew-cask:grammarly-desktop" = "latest"
+"brew-cask:granola" = "latest"
+"brew-cask:iina" = "latest"
+"brew-cask:karabiner-elements" = "latest"
+"brew-cask:keymapp" = "latest"
+"brew-cask:logi-options+" = "latest"
+"brew-cask:microsoft-auto-update" = "latest"
+"brew-cask:minecraft" = "latest"
+"brew-cask:neo4j-desktop" = "latest"
+"brew-cask:notion-calendar" = "latest"
+"brew-cask:notion-mail" = "latest"
+"brew-cask:orbstack" = "latest"
+"brew-cask:sizeup" = "latest"
+"brew-cask:slack" = "latest"
+"brew-cask:thebrowsercompany-dia" = "latest"
+"brew-cask:vorssaint" = "latest"
+"brew-cask:webex" = "latest"
+"brew-cask:webstorm" = "latest"
+"brew-cask:zed" = "latest"
+"mas:571213070" = "latest"
+
+[dotfiles]
+"~/.bashrc" = {}
+"~/.claude/CLAUDE.md" = { mode = "absent" }
+"~/.claude/RTK.md" = { mode = "copy", permissions = "0600" }
+"~/.codex/AGENTS.md" = { mode = "copy", permissions = "0600" }
+"~/.codex/RTK.md" = { mode = "copy", permissions = "0600" }
+"~/.codex/config.toml" = { mode = "symlink", relative = true }
+"~/.codex/rules/default.rules" = {}
+"~/.config/aerospace/aerospace.toml" = {}
+"~/.config/atuin/config.toml" = {}
+"~/.config/atuin/themes/ayu-dark.toml" = {}
+"~/.config/atuin/themes/catppuccin-mocha-lavender.toml" = {}
+"~/.config/bat/config" = {}
+"~/.config/bat/themes/Ayu Dark.tmTheme" = {}
+"~/.config/btop/btop.conf" = {}
+"~/.config/btop/themes/catppuccin_mocha.theme" = {}
+"~/.config/fish/completions/wt.fish" = { mode = "copy", permissions = "0600" }
+"~/.config/fish/conf.d/00_mise.fish" = {}
+"~/.config/fish/config.fish" = {}
+"~/.config/fish/fish_plugins" = {}
+"~/.config/fish/functions/_ze_cd.fish" = {}
+"~/.config/fish/functions/bi.fish" = {}
+"~/.config/fish/functions/br.fish" = {}
+"~/.config/fish/functions/cat.fish" = {}
+"~/.config/fish/functions/cd.fish" = {}
+"~/.config/fish/functions/df.fish" = {}
+"~/.config/fish/functions/dig.fish" = {}
+"~/.config/fish/functions/dock.fish" = {}
+"~/.config/fish/functions/download.fish" = {}
+"~/.config/fish/functions/du.fish" = {}
+"~/.config/fish/functions/fish_greeting.fish" = {}
+"~/.config/fish/functions/g.fish" = {}
+"~/.config/fish/functions/ga.fish" = {}
+"~/.config/fish/functions/gb.fish" = {}
+"~/.config/fish/functions/gc.fish" = {}
+"~/.config/fish/functions/gclone.fish" = {}
+"~/.config/fish/functions/ginit.fish" = {}
+"~/.config/fish/functions/gl.fish" = {}
+"~/.config/fish/functions/gp.fish" = {}
+"~/.config/fish/functions/gst.fish" = {}
+"~/.config/fish/functions/headroom-install-service.fish" = {}
+"~/.config/fish/functions/jjskill.fish" = {}
+"~/.config/fish/functions/jmr.fish" = {}
+"~/.config/fish/functions/la.fish" = {}
+"~/.config/fish/functions/ll.fish" = {}
+"~/.config/fish/functions/lla.fish" = {}
+"~/.config/fish/functions/ls.fish" = {}
+"~/.config/fish/functions/lt.fish" = {}
+"~/.config/fish/functions/m.fish" = {}
+"~/.config/fish/functions/mkvenv.fish" = {}
+"~/.config/fish/functions/plo.fish" = {}
+"~/.config/fish/functions/rclaude.fish" = {}
+"~/.config/fish/functions/rcodex.fish" = {}
+"~/.config/fish/functions/rm.fish" = {}
+"~/.config/fish/functions/starship_transient_prompt_func.fish" = {}
+"~/.config/fish/functions/using.fish" = {}
+"~/.config/fish/functions/uvu.fish" = {}
+"~/.config/fish/functions/vivaldi_restore.fish" = {}
+"~/.config/fish/functions/wt.fish" = { mode = "symlink", relative = true }
+"~/.config/fish/functions/ze.fish" = {}
+"~/.config/fish/themes/Ayu Dark.theme" = {}
+"~/.config/ghostty/config" = {}
+"~/.config/ghostty/themes/catppuccin-mocha.conf" = {}
+"~/.config/git/config" = {}
+"~/.config/git/ignore" = {}
+"~/.config/helix/config.toml" = {}
+"~/.config/herdr/config.toml" = {}
+"~/.config/htop" = { permissions = "0700" }
+"~/.config/htop/htoprc" = {}
+"~/.config/jj" = { permissions = "0700" }
+"~/.config/jj/config.toml" = {}
+"~/.config/rex/init.lua" = {}
+"~/.config/starship.toml" = {}
+"~/.config/tmux/ayu.conf" = {}
+"~/.config/wezterm/wezterm.lua" = {}
+"~/.config/worktrunk/config.toml" = { mode = "copy", permissions = "0600" }
+"~/.config/zed/settings.json" = { mode = "symlink", relative = true }
+"~/.config/zellij/config.kdl" = {}
+# ~/.desktop_backgrounds/ is local-only: the wallpapers are third-party licensed
+# and gitignored, so there is nothing for this repo to deploy to a new machine.
+"~/.finicky.js" = {}
+"~/.p10k.zsh" = {}
+"~/.ssh" = { permissions = "0700" }
+"~/.ssh/config" = { mode = "copy", permissions = "0600" }
+"~/.ssh/id_rsa.pub" = { mode = "copy", permissions = "0600" }
+"~/.tmux.conf" = {}
+"~/.tmux.conf.local" = {}
+"~/.tmux.reset.conf" = {}
+"~/.zsh-aliases" = {}
+"~/.zsh_custom/README.md" = {}
+"~/.zsh_custom/autoload/homebrew.zsh" = {}
+"~/.zsh_custom/autoload/host.zsh" = {}
+"~/.zsh_custom/autoload/java.zsh" = {}
+"~/.zsh_custom/autoload/kubernetes.zsh" = {}
+"~/.zsh_custom/autoload/python.zsh" = {}
+"~/.zsh_custom/autoload/qmk.zsh" = {}
+"~/.zshenv" = {}
+"~/.zshrc" = {}
+"~/Library" = { permissions = "0700" }
+"~/Library/Application Support" = { permissions = "0700" }
+"~/Library/Application Support/Code" = { permissions = "0700" }
+"~/Library/Application Support/Code/User/settings.json" = { mode = "symlink", relative = true }
+"~/Library/Preferences" = { permissions = "0700" }
+"~/bin/set_wp_for_workspace.fish" = {}
+"~/bin/uv_python_symlink" = {}
+"~/bin/ze.sh" = {}
+"~/bin/zex.sh" = {}
+"~/config/Gallium.cfg" = {}
+"~/config/LaunchDaemons/com.example.kanata.plist" = { mode = "template" }
+"~/config/LaunchDaemons/org.custom.karabiner.plist" = {}
+"~/config/dock.backup" = {}
+"~/config/neo_init.yaml" = {}
+
+[bootstrap.repos]
+"~/.config/rex/rex-config" = { url = "https://github.com/johnstegeman/rex-config.git" }
+"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm.git" }
+
+[bootstrap.files."/Library/LaunchDaemons/com.example.kanata.plist"]
+source = "~/.dotfiles/config/LaunchDaemons/com.example.kanata.plist"
+template = true
+owner = "root"
+group = "wheel"
+mode = "0644"
+os = "macos"
+
+[bootstrap.hooks.final]
+description = "Reload the kanata LaunchDaemon from the declarative plist"
+# Hooks run on every bootstrap; the script reloads only when the plist hash
+# differs from the hash it last reloaded, so unchanged runs cost no sudo.
+# It lives in hooks/ because scripts/ and bin/ are deployed to $HOME.
+run = '"$HOME/.dotfiles/hooks/reload-kanata-daemon.sh"'

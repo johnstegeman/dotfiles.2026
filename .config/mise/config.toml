@@ -1,0 +1,59 @@
+[settings]
+python.uv_venv_auto = "source"
+experimental = true
+# idiomatic_version_file_enable_tools = ["swift"]
+auto_install = true
+jobs = 4
+minimum_release_age_excludes = ["pi"]
+# MISE_DATA_DIR/MISE_INSTALLS_DIR are env-only (no setting key), so a mise started
+# without the fish environment would look for shims in ~/.local/share/mise. Pinning
+# the shim directory keeps shim lookup independent of that environment.
+shims_dir = "/opt/m/shims"
+
+dotfiles.default_mode = "copy"
+
+# History tracking for files that are edited live and pushed back to the repo with
+# `mise dot add`. One entry per path here; the matching `copy` entry lives in a
+# config.<env>.toml, because one file cannot declare the same target twice.
+[dotfiles]
+"~/.bashrc" = { mode = "track" }
+"~/.codex/rules/default.rules" = { mode = "track" }
+"~/.config/aerospace/aerospace.toml" = { mode = "track" }
+"~/.config/btop/btop.conf" = { mode = "track" }
+"~/.config/fish/completions/wt.fish" = { mode = "track" }
+"~/.config/fish/config.fish" = { mode = "track" }
+"~/.config/fish/fish_plugins" = { mode = "track" }
+"~/.config/fish/functions/_ze_cd.fish" = { mode = "track" }
+"~/.config/fish/functions/gclone.fish" = { mode = "track" }
+"~/.config/fish/functions/ginit.fish" = { mode = "track" }
+"~/.config/fish/functions/headroom-install-service.fish" = { mode = "track" }
+"~/.config/fish/functions/m.fish" = { mode = "track" }
+"~/.config/fish/functions/ze.fish" = { mode = "track" }
+"~/.config/git/config" = { mode = "track" }
+"~/.config/git/ignore" = { mode = "track" }
+"~/.config/herdr/config.toml" = { mode = "track" }
+"~/.config/rex/init.lua" = { mode = "track" }
+"~/.config/worktrunk/config.toml" = { mode = "track" }
+"~/.zshrc" = { mode = "track" }
+"~/bin/set_wp_for_workspace.fish" = { mode = "track" }
+"~/bin/ze.sh" = { mode = "track" }
+"~/bin/zex.sh" = { mode = "track" }
+
+[bootstrap.services.mise-history]
+builtin = "history-watch"
+
+[tasks.pkg]
+description = "Add a package to a config environment and install it"
+usage = '''
+arg "<package>"
+arg "<env>"
+'''
+run = 'mise bootstrap packages use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.package | quote }}'
+
+[tasks.tool]
+description = "Add a tool to a config environment and install it"
+usage = '''
+arg "<tool>"
+arg "<env>"
+'''
+run = 'mise use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.tool | quote }}'

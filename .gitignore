@@ -1,0 +1,9 @@
+*.local.toml
+.DS_Store
+
+# Local-only: holds an internal endpoint, a work identity and a Langfuse project
+# key, so it is neither tracked nor deployed from this repo.
+.claude/settings.json
+
+# Local-only wallpapers: third-party licensed and ~76 MB on their own.
+.desktop_backgrounds/

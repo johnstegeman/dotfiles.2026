@@ -1,0 +1,20 @@
+font-family = "Monaspace Neon NF ExtraLight"
+font-style = "ExtraLight"
+font-size = "15"
+
+font-thicken = "true"
+
+window-height = "40"
+window-width = "156"
+
+confirm-close-surface = "false"
+
+macos-option-as-alt = "true"
+theme = "Catppuccin Mocha"
+
+# macos-window-buttons = hidden
+
+background-opacity = 1
+background-blur=16
+
+shell-integration-features = ssh-terminfo,ssh-env

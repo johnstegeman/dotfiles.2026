@@ -1,0 +1,1 @@
+env = ["shell", "utilities", "vcs", "cloud", "k8s", "macos", "ai"]
