@@ -9,9 +9,14 @@ function m --description 'wrapper for mise: up (update everything), out (preview
       # brew:kanata is withheld from every update: it is a HEAD build driving the keyboard
       # remapper LaunchDaemon, and a bottle pour would silently replace HEAD, so upgrading
       # it is always an explicit decision.
+      #
+      # brew:aisk/tap/timeout is withheld too: its only bottle is tagged arm64_sonoma,
+      # so on a newer macOS mise resolves it to the source path and pours its
+      # `depends_on "ghc" => :build` (2.2 GB) on every run, even though the formula
+      # itself is already current. Upgrade it explicitly if that ever changes.
       set -l packages (mise bootstrap packages status --json \
         | jq -r 'to_entries[] | .key as $m | .value.packages[]? | "\($m):\(.package)"' \
-        | grep -vxF brew:kanata)
+        | grep -vxE 'brew:kanata|brew:aisk/tap/timeout')
 
       if not set -q packages[1]
         echo "Error: could not read the package list from mise" >&2

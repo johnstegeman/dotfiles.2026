@@ -43,10 +43,15 @@ Two fish functions, `m out` and `m up`, both wrapping mise. `m out` previews,
 | brew packages | `mise bootstrap packages upgrade --dry-run <list>` | `mise bootstrap packages upgrade <list>` |
 | leftovers | — | `brew cleanup` |
 
-One package is withheld from mise's list: **`brew:kanata`**, a HEAD build (`HEAD-f1ea695`)
-driving the keyboard remapper LaunchDaemon. Unfiltered, mise wants to pour the
-`kanata/1.12.0` bottle, silently replacing HEAD; Homebrew itself leaves it alone.
-Upgrading kanata remains an explicit decision, never part of a bulk run.
+Two packages are withheld from mise's list. **`brew:kanata`** is a HEAD build
+(`HEAD-f1ea695`) driving the keyboard remapper LaunchDaemon: unfiltered, mise wants to
+pour the `kanata/1.12.0` bottle, silently replacing HEAD, and Homebrew itself leaves
+it alone. **`brew:aisk/tap/timeout`** declares only an `arm64_sonoma` bottle, so on a
+newer macOS mise takes its source path and pours its `depends_on "ghc" => :build` --
+2.2 GB, installed as an unneeded dependency and flagged by `brew autoremove` -- on
+every run, even though the formula itself is already current. Filtering it is what
+stops that; Homebrew's own `brew upgrade` still covers it. Upgrading either one
+remains an explicit decision, never part of a bulk run.
 
 mise itself is not in the list either, because it is no longer a Homebrew package: it is
 the curl install at `/opt/m/bin/mise` and upgrades with `mise self-update`.
