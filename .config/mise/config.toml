@@ -1,4 +1,5 @@
 [settings]
+self_update.auto = true
 python.uv_venv_auto = "source"
 experimental = true
 # idiomatic_version_file_enable_tools = ["swift"]
