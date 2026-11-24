@@ -1,4 +1,5 @@
 {
+    "terminal.integrated.enableImages": true,
     "update.mode": "none",
    "security.workspace.trust.banner": "never",
    "security.workspace.trust.untrustedFiles": "open",
