@@ -49,7 +49,10 @@ usage = '''
 arg "<package>"
 arg "<env>"
 '''
-run = 'mise bootstrap packages use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.package | quote }}'
+# Tasks run in a subprocess env whose PATH mise has already stripped of the
+# directory holding its own binary (see ~/.config/fish/conf.d/00_mise.fish), so a
+# bare `mise` here would fail with "sh: mise: command not found".
+run = '{{ mise_bin }} bootstrap packages use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.package | quote }}'
 
 [tasks.tool]
 description = "Add a tool to a config environment and install it"
@@ -57,4 +60,4 @@ usage = '''
 arg "<tool>"
 arg "<env>"
 '''
-run = 'mise use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.tool | quote }}'
+run = '{{ mise_bin }} use -p {{ mise_config_dir }}/config.{{ usage.env }}.toml {{ usage.tool | quote }}'
