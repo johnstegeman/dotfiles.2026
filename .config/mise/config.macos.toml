@@ -163,9 +163,24 @@ group = "wheel"
 mode = "0644"
 os = "macos"
 
+# A pin is machine state (symlinks under var/homebrew/pinned, Caskroom metadata),
+# never repository state, so it does not survive a migration between dotfiles
+# managers -- haven -> mise dropped the kanata and karabiner-elements pins and
+# brew started floating them. Pin before the packages step so an upgrade cannot
+# move a package, and again after it so a freshly installed package is pinned too.
+[bootstrap.hooks.pre-packages]
+description = "Restore the Homebrew pins declared in hooks/brew-pins.txt"
+run = '"$HOME/.dotfiles/hooks/ensure-brew-pins.sh"'
+
+[bootstrap.hooks.post-packages]
+description = "Pin the Homebrew packages the bootstrap just installed"
+run = '"$HOME/.dotfiles/hooks/ensure-brew-pins.sh"'
+
 [bootstrap.hooks.final]
 description = "Reload the kanata LaunchDaemon from the declarative plist"
 # Hooks run on every bootstrap; the script reloads only when the plist hash
 # differs from the hash it last reloaded, so unchanged runs cost no sudo.
+# It also repairs /opt/homebrew/bin/kanata when a bottle pour has replaced the
+# pinned HEAD keg, and forces the reload in that case.
 # It lives in hooks/ because scripts/ and bin/ are deployed to $HOME.
 run = '"$HOME/.dotfiles/hooks/reload-kanata-daemon.sh"'

@@ -53,6 +53,31 @@ every run, even though the formula itself is already current. Filtering it is wh
 stops that; Homebrew's own `brew upgrade` still covers it. Upgrading either one
 remains an explicit decision, never part of a bulk run.
 
+### Pinned packages
+
+Bulk runs must also not *float* the packages whose version is load-bearing. Those
+pins are declared in [`hooks/brew-pins.txt`](hooks/brew-pins.txt) and are machine
+state that a repository cannot inherit: Homebrew keeps formula pins as symlinks in
+`/opt/homebrew/var/homebrew/pinned` and cask pins in Caskroom metadata, so the
+haven -> mise migration dropped them without a trace and `brew upgrade` quietly
+started floating the package versions this machine is tuned around.
+
+`hooks/ensure-brew-pins.sh` restores them. It runs from
+`[bootstrap.hooks.pre-packages]` and `[bootstrap.hooks.post-packages]`: pinning
+before the packages step stops an upgrade from moving an already-installed package,
+pinning after it covers anything the step just installed, and a run where every pin
+already matches is a no-op. Pins found outside the declared list are reported but
+left alone, because unpinning is as explicit a decision as upgrading.
+
+Pinning is not sufficient on its own for `brew:kanata` -- mise's package step calls
+`brew install`, which pours the bottle over a pinned HEAD keg. That is why the
+formula is filtered out of `m up` as well, and why
+`hooks/reload-kanata-daemon.sh` re-points `/opt/homebrew/bin/kanata` at the HEAD keg
+and forces a daemon reload whenever it finds the bottle linked instead. The builds
+are not interchangeable: `1.12.0` ships `karabiner-driverkit` 0.3.1, whose Karabiner
+driver IPC differs from the installed driver's, so the remapper runs, grabs nothing
+and silently types nothing.
+
 mise itself is not in the list either, because it is no longer a Homebrew package: it is
 the curl install at `/opt/m/bin/mise` and upgrades with `mise self-update`.
 
@@ -145,7 +170,14 @@ One deployed file is root-owned and needs sudo: the kanata LaunchDaemon plist at
 `[bootstrap.files]` with `owner = "root"`. Its reload hook
 (`hooks/reload-kanata-daemon.sh`) runs on every bootstrap but reloads the daemon
 only when the plist content hash changes, so an unchanged run costs no sudo and
-does not restart the keyboard remapper.
+does not restart the keyboard remapper. It also re-points `/opt/homebrew/bin/kanata`
+at the HEAD keg and forces a reload when it finds the release bottle linked there
+instead -- see [Pinned packages](#pinned-packages).
+
+Homebrew pins are restored by `hooks/ensure-brew-pins.sh` from the `pre-packages`
+and `post-packages` hooks; the list lives in `hooks/brew-pins.txt`. Both scripts
+are idempotent, so they are safe on every run and are the only thing that carries
+the pins across a machine rebuild or a migration between dotfiles managers.
 
 ## Known warts
 

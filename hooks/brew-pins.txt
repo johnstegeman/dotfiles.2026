@@ -1,0 +1,27 @@
+# Homebrew packages whose version is controlled deliberately: `brew upgrade` and
+# `mise bootstrap packages` must not float them. Restored on every bootstrap by
+# hooks/ensure-brew-pins.sh.
+#
+# This list has to exist because a pin is *machine* state, not repository state.
+# Formulae are pinned through symlinks in /opt/homebrew/var/homebrew/pinned, casks
+# through their Caskroom metadata; neither lives in this repo, so the haven ->
+# mise migration dropped the pins without a trace and `brew upgrade` quietly
+# started floating packages whose version is load-bearing.
+#
+# One package name per line, formula or cask, `#` comments allowed.
+
+# HEAD build (karabiner-driverkit 0.4.0) driving the keyboard remapper
+# LaunchDaemon. The 1.12.0 bottle bundles crate 0.3.1, which speaks a different
+# Karabiner IPC and cannot reach the installed driver, so pouring it silently
+# disables the keyboard. hooks/reload-kanata-daemon.sh also keeps the
+# /opt/homebrew/bin/kanata symlink on the HEAD keg.
+kanata
+
+# Ships the DriverKit VHID driver (currently 1.8.0) that kanata's bundled
+# karabiner-driverkit crate is written against. Upgrading it changes the driver
+# IPC under kanata's feet: pin, upgrade kanata, then re-check together.
+karabiner-elements
+
+# Self-updating browser bundle; a cask upgrade reinstalls the .app and discards
+# the profile state it keeps inside the bundle.
+thebrowsercompany-dia
