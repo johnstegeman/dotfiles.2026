@@ -40,8 +40,18 @@ Two fish functions, `m out` and `m up`, both wrapping mise. `m out` previews,
 | step | preview (`m out`, `m up -n`) | act (`m up`) |
 |---|---|---|
 | mise tools | `mise outdated` | `mise upgrade` |
-| brew packages | `mise bootstrap packages upgrade --dry-run <list>` | `mise bootstrap packages upgrade <list>` |
+| brew formulae and mas apps | `mise bootstrap packages upgrade --dry-run <list>` | `mise bootstrap packages upgrade <list>` |
+| brew casks | `brew upgrade --cask --dry-run <casks>` | `brew upgrade --cask <casks>` |
 | leftovers | — | `brew cleanup` |
+
+The cask step is separate because mise does not update casks: its `brew-cask`
+manager only ensures a cask is installed, and `upgrade` answers
+`installed and managed by Homebrew; leaving unchanged` for every one of them.
+`m.fish` therefore drives brew directly, naming only the casks that are
+declared **and** outdated. That keeps the output honest — brew warns once per
+up-to-date cask and exits non-zero if a pinned one is named — and leaves
+undeclared trial installs alone; `brew outdated` omits pinned casks, so
+`karabiner-elements` and `thebrowsercompany-dia` stay where they are.
 
 Two packages are withheld from mise's list. **`brew:kanata`** is a HEAD build
 (`HEAD-f1ea695`) driving the keyboard remapper LaunchDaemon: unfiltered, mise wants to
